@@ -2,22 +2,16 @@
 <project default="build">
     
     <property name="dita-ot-version" value="3.7"/>
-    <property name="plugin.name" value="org.doctales.reveal"/>
 
     <target name="get-dita-ot">
         <get src="https://github.com/dita-ot/dita-ot/releases/download/${dita-ot-version}/dita-ot-${dita-ot-version}.zip" dest="."/>
         <unzip src="dita-ot-${dita-ot-version}.zip" dest="."/>
         <chmod file="dita-ot-${dita-ot-version}/bin/dita" perm="ugo+rx"/>
         <chmod file="dita-ot-${dita-ot-version}/bin/ant" perm="ugo+rx"/>
-        
-        <!--- dita-ot-$DITAOT/bin/dita -\-install org.doctales.reveal.zip-->
-        
-        <!--script:
-        - dita-ot-$DITAOT/bin/dita -i samples/doctales.ditamap -f reveal -v -Dargs.reveal.css="plugins/org.doctales.reveal/css/doctales.css" -Dargs.reveal.theme="doctales"-->
     </target>
     
     <target name="zip-plugin">
-        <zip destfile="${org.doctales.reveal}.zip">
+        <zip destfile="org.doctales.reveal.zip">
             <zipfileset dir=".">
                 <include name="**.*"/>
                 <exclude name="*.zip"/>
