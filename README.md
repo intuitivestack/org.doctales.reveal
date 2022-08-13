@@ -4,7 +4,8 @@ org.doctales.reveal
 ![DOCTALES Logo](https://doctales.github.io/images/doctales-logo-without-subtitle.svg)
 
 [![DITA-OT 3.7](https://img.shields.io/badge/DITA--OT-3.7-blue.svg)](http://www.dita-ot.org/3.7)  
-[![Build Status](https://travis-ci.org/doctales/org.doctales.reveal.svg?branch=master)](https://travis-ci.org/doctales/org.doctales.reveal)
+[![Build master](https://github.com/doctales/org.doctales.reveal/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/doctales/org.doctales.reveal/actions/workflows/build.yml)
+[![Build develop](https://github.com/doctales/org.doctales.reveal/actions/workflows/build.yml/badge.svg?branch=develop)](https://github.com/doctales/org.doctales.reveal/actions/workflows/build.yml)
 [![license](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 
 This is a plugin for the DITA-OT. The plugin adds a new transtype called `reveal` for transforming DITA maps into [reveal.js](https://revealjs.com/#/) based web presentations.
