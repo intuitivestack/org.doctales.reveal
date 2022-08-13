@@ -16,12 +16,13 @@
     
     <target name="zip-plugin">
         <zip destfile="org.doctales.reveal.zip">
-            <zipfileset dir=".">
-                <include name="**.*"/>
+            <fileset dir=".">
+                <include name="*/**"/>
                 <exclude name="*.zip"/>
-                <exclude name="**/out"/>
-                <exclude name="**/temp"/>
-            </zipfileset>
+                <exclude name="*.xpr"/>
+                <exclude name="*/out/"/>
+                <exclude name="*/temp/"/>
+            </fileset>
         </zip>
     </target>
     
