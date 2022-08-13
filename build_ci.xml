@@ -2,6 +2,10 @@
 <project default="build">
     
     <property name="dita-ot-version" value="3.7"/>
+    
+    <target name="current-dir">
+        <echo message="${ant.file}"/>
+    </target>
 
     <target name="get-dita-ot">
         <get src="https://github.com/dita-ot/dita-ot/releases/download/${dita-ot-version}/dita-ot-${dita-ot-version}.zip" dest="." quiet="true" verbose="off"/>
@@ -28,7 +32,7 @@
     </target>
     
     <target name="list-files">
-        <dirset id="files" dir="." includes="*"/> 
+        <fileset id="files" dir="." includes="*"/> 
         <property name="all.files" refid="files"/>
         <echo>${all.files}</echo>
     </target>
@@ -39,6 +43,6 @@
         </exec>
     </target>
     
-    <target name="build" depends="get-dita-ot, zip-plugin, install-plugin, list-files, generate-sample-presentation"/>
+    <target name="build" depends="current-dir, get-dita-ot, zip-plugin, install-plugin, list-files, generate-sample-presentation"/>
     
 </project>

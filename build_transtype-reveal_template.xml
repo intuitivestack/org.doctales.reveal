@@ -307,7 +307,8 @@
         <fail if:set="cannot-get-revealjs">Cannot reach host '${revealDownloadUrl}' to download reveal-js</fail>
         <get
             unless:set="reveal.archive.available"
-            verbose="on"
+            quiet="true"
+            verbose="off"
             src="${revealDownloadUrl}"
             dest="${revealCacheDir}"
             skipexisting="true"/>
@@ -322,26 +323,9 @@
 
         
         <pipeline message="Convert DITA topics to reveal.js slides" taskname="xslt">
-            <xslt destdir="${dita.output.dir}" reloadstylesheet="${dita.html5.reloadstylesheet}" extension=".html" style="${dita.plugin.org.doctales.reveal.dir}/xsl/reveal.xsl" filenameparameter="FILENAME" filedirparameter="FILEDIR" parallel="${parallel}">
+            <xslt destdir="${dita.output.dir}" reloadstylesheet="${dita.html5.reloadstylesheet}" extension=".html" style="xsl/reveal.xsl" filenameparameter="FILENAME" filedirparameter="FILEDIR" parallel="${parallel}">
                 <ditafileset format="dita" processingRole="normal"/>
-                <!--<param name="FILTERFILE" expression="${dita.input.valfile.url}" if:set="dita.input.valfile"/>
-                <param name="CSS" expression="${args.css.file}" if:set="args.css.file"/>
-                <param name="CSSPATH" expression="${user.csspath}" if:set="user.csspath"/>
-                <param name="HDF" expression="${args.hdf}" if:set="args.hdf"/>
-                <param name="HDR" expression="${args.hdr}" if:set="args.hdr"/>
-                <param name="FTR" expression="${args.ftr}" if:set="args.ftr"/>
-                <param name="DRAFT" expression="${args.draft}" if:set="args.draft"/>
-                <param name="ARTLBL" expression="${args.artlbl}" if:set="args.artlbl"/>
-                <param name="GENERATE-TASK-LABELS" expression="${args.gen.task.lbl}" if:set="args.gen.task.lbl"/>
-                <param name="PRESERVE-DITA-CLASS" expression="${args.html5.classattr}" if:set="args.html5.classattr"/>
-                <param name="NOPARENTLINK" expression="${args.hide.parent.link}" if:set="args.hide.parent.link"/>
-                <param name="include.rellinks" expression="${include.rellinks}"/>
-                <param name="INDEXSHOW" expression="${args.indexshow}" if:set="args.indexshow"/>
-                <param name="genDefMeta" expression="${args.gen.default.meta}" if:set="args.gen.default.meta"/>
-                <param name="OUTEXT" expression="${out.ext}" if:set="out.ext"/>
-                <param name="BASEDIR" expression="${dita.dir}"/>
-                <param name="OUTPUTDIR" expression="${dita.output.dir}"/>
-                <param name="defaultLanguage" expression="${default.language}"/>-->
+              
                 <param name="TRANSTYPE" expression="${transtype}"/>
                 <param name="DITAEXT" expression="${dita.ext}" if:set="dita.ext"/>
                 <param name="FILTERFILE" expression="${dita.input.valfile.url}" if:set="dita.input.valfile"/>
