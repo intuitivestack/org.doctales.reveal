@@ -2,13 +2,13 @@
 <project default="build">
     
     <property name="dita-ot-version" value="3.7"/>
+    <property name="plugin.name" value="org.doctales.reveal"/>
 
     <target name="get-dita-ot">
         <get src="https://github.com/dita-ot/dita-ot/releases/download/${dita-ot-version}/dita-ot-${dita-ot-version}.zip" dest="."/>
-        <unzip src="dita-ot-${dita-ot-version}.zip"/>
-        <!--- unzip -q dita-ot-$DITAOT.zip
-        - chmod +x dita-ot-$DITAOT/bin/dita
-        - chmod +x dita-ot-$DITAOT/bin/ant-->
+        <unzip src="dita-ot-${dita-ot-version}.zip" dest="."/>
+        <chmod file="dita-ot-${dita-ot-version}/bin/dita" perm="ugo+rx"/>
+        <chmod file="dita-ot-${dita-ot-version}/bin/ant" perm="ugo+rx"/>
         
         <!--- dita-ot-$DITAOT/bin/dita -\-install org.doctales.reveal.zip-->
         
@@ -17,10 +17,28 @@
     </target>
     
     <target name="zip-plugin">
-        
+        <zip destfile="${org.doctales.reveal}.zip">
+            <zipfileset dir=".">
+                <include name="**.*"/>
+                <exclude name="*.zip"/>
+                <exclude name="**/out"/>
+                <exclude name="**/temp"/>
+            </zipfileset>
+        </zip>
     </target>
     
-    <target name="build" depends="get-dita-ot, zip-plugin">
-        <echo>Hello</echo>
+    <target name="install-plugin">
+        <exec executable="dita-ot-${dita-ot-version}/bin/dita">
+            <arg line="--install org.doctales.reveal.zip"/>
+        </exec>
     </target>
+    
+    <target name="generate-sample-presentation">
+        <exec executable="dita-ot-${dita-ot-version}/bin/dita">
+            <arg line="--input samples/doctales.ditamap --format reveal -v -Dargs.reveal.css=css/doctales.css -Dargs.reveal.theme=doctales"/>
+        </exec>
+    </target>
+    
+    <target name="build" depends="get-dita-ot, zip-plugin, install-plugin, generate-sample-presentation"/>
+    
 </project>
