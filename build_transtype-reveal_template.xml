@@ -53,11 +53,17 @@
         
         <!-- Do not generate releated links -->
         <property name="args.rellinks" value="none"/>
+        <echo level="info">* args.rellinks = ${args.rellinks}</echo>
         
         <!-- Do not generate a nav-toc (HTML5) -->
         <property name="nav-toc" value="none"/>
+        <echo level="info">* nav-toc = ${nav-toc}</echo>
+        
         <property name="args.xsl" value="${dita.plugin.org.doctales.reveal.dir}/xsl/reveal.xsl"/>
+        <echo level="info">* args.xsl = ${args.xsl}</echo>
+        
         <property name="root-chunk-override" value="to-content"/>
+        <echo level="info">* root-chunk-override = ${root-chunk-override}</echo>
         
         <condition property="args.reveal.controlsLayout" value="edges">
             <not>
