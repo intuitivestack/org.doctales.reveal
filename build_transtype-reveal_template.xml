@@ -321,9 +321,8 @@
     <target name="reveal">
         <description>Build XHTML output from dita inner and outer topics, which will adjust the directory.</description>
 
-        <makeurl file="xsl/reveal.xsl" property="reveal.xsl.url"/>        
         <pipeline message="Convert DITA topics to reveal.js slides" taskname="xslt">
-            <xslt destdir="${dita.output.dir}" reloadstylesheet="${dita.html5.reloadstylesheet}" extension=".html" style="${reveal.xsl.url}" filenameparameter="FILENAME" filedirparameter="FILEDIR" parallel="${parallel}">
+            <xslt destdir="${dita.output.dir}" reloadstylesheet="${dita.html5.reloadstylesheet}" extension=".html" style="${dita.plugin.org.doctales.reveal.dir}" filenameparameter="FILENAME" filedirparameter="FILEDIR" parallel="${parallel}">
                 <ditafileset format="dita" processingRole="normal"/>
               
                 <param name="TRANSTYPE" expression="${transtype}"/>
