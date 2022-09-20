@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="urn:oasis:names:tc:dita:rng:vocabularyModuleDesc.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<grammar 
+  xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  xmlns:dita="http://dita.oasis-open.org/architecture/2005/"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <moduleDesc xmlns="http://dita.oasis-open.org/architecture/2005/">
+    <moduleTitle>DITA Reveal Data Attribute Domain </moduleTitle>
+    <headerComment xml:space="preserve">
+========================================================================================================================
+                                                         HEADER
+========================================================================================================================
+          MODULE:   DITA Reveal Data Attribute Domain
+          VERSION:  1.3
+          DATE:     September 2022
+
+========================================================================================================================
+          PUBLIC DOCUMENT TYPE DEFINITION TYPICAL INVOCATION
+
+          Refer to this file by the following public identifier or an appropriate system identifier
+          PUBLIC "-//DOCTALES//ENTITIES DITA Reveal Data Domain//EN"
+
+          Delivered as file "revealDataAttDomain.rng"
+
+========================================================================================================================
+
+          SYSTEM:   Darwin Information Typing Architecture (DITA)
+
+          PURPOSE:  Adds Reveal Data Attribute Domain for reveal.js data-* attributes related to
+                    auto-animation and codeblocks. See https://revealjs.com/auto-animate/ and https://revealjs.com/code/.
+                    
+                    data-background-* attributes are not included; to use, add as prolog/data where @name 
+                    is the name of the data-background-* attribute and the value is in the element's text()  
+
+          ORIGINAL CREATION DATE:
+                    September 2022
+
+                    (C) Copyright Intuitive Stack 2022.
+                    All Rights Reserved.
+                                                   
+          UPDATES:
+                    2022-09-19 LE: Initial Relax NG release
+
+========================================================================================================================
+    </headerComment>
+    <moduleMetadata>
+      <moduleType>attributedomain</moduleType>
+      <moduleShortName>revealDataAtt-d</moduleShortName>
+      <modulePublicIds>
+        <dtdEnt>-//DOCTALES//ENTITIES DITA<var presep=" " name="ditaver"/> Reveal Data Domain//EN</dtdEnt>
+        <xsdMod>urn:doctales:dita:xsd:revealDataAttDomain.xsd<var presep=":" name="ditaver"/></xsdMod>
+        <rncMod>urn:doctales:dita:rnc:revealDataAttDomain.rnc<var presep=":" name="ditaver"/></rncMod>
+        <rngMod>urn:doctales:dita:rng:revealDataAttDomain.rng<var presep=":" name="ditaver"/></rngMod>
+      </modulePublicIds>
+      <domainsContribution>a(base revealData)</domainsContribution>
+    </moduleMetadata>
+  </moduleDesc>
+  <define name="revealDataAtt-d-attribute">
+    <!-- For auto-animate and codeblock -->
+    <optional>
+      <attribute name="data-id">
+        <a:documentation>Data ID of element. Where automatic matching is not feasible you can give the objects that you want to animate between a matching data-id attribute. We prioritize matching data-id values above our automatic matching.</a:documentation>
+        <choice>
+          <text/>
+        </choice>
+      </attribute>
+    </optional>
+    <!-- Auto-animate -->
+    <optional>
+      <attribute name="data-auto-animate">
+        <a:documentation>Determines whether elements with no matching auto-animate target should fade in. Set to false to make them appear instantly. https://revealjs.com/auto-animate/</a:documentation>
+        <choice>
+          <value>true</value>
+          <value>false</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="data-auto-animate-easing">
+        <a:documentation>A CSS easing function. https://revealjs.com/auto-animate/</a:documentation>
+        <choice>
+          <text/>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="data-auto-animate-unmatched">
+        <a:documentation>Determines whether elements with no matching auto-animate target should fade in. Set to false to make them appear instantly. https://revealjs.com/auto-animate/</a:documentation>
+        <choice>
+          <value>true</value>
+          <value>false</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="data-auto-animate-duration">
+        <a:documentation>Animation duration in seconds. https://revealjs.com/auto-animate/</a:documentation>
+        <choice>
+          <data type="float"></data>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="data-auto-animate-delay">
+        <a:documentation>Animation delay in seconds (can only be set for specific elements, not at the slide level). https://revealjs.com/auto-animate/</a:documentation>
+        <choice>
+          <data type="float"></data>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="data-auto-animate-id">
+        <a:documentation>An ID tying auto-animate slides together. https://revealjs.com/auto-animate/</a:documentation>
+        <choice>
+          <text/>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="data-auto-animate-restart">
+        <a:documentation>When present, breaks apart two adjacent auto-animate slides (even with the same id). This attribute accepts no value. https://revealjs.com/auto-animate/</a:documentation>
+        <empty/>
+      </attribute>
+    </optional>
+    <!-- Codeblocks -->
+    <optional>
+      <attribute name="data-line-numbers">
+        <a:documentation>If you want to highlight specific lines you can provide a comma separated list of line numbers using the same attribute (e.g., 3,8-10). You can step through multiple code highlights on the same code block. Delimit each of your highlight steps with the | character (e.g., 3|8-10|12,14-18).  https://revealjs.com/code/</a:documentation>
+        <choice>
+          <text/>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="data-trim">
+        <a:documentation>When present surrounding whitespace within the code is automatically removed. HTML will be escaped by default. This attribute accepts no value. https://revealjs.com/code/</a:documentation>
+        <empty/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="data-noescape">
+        <a:documentation>Use in conjunction with data-trim to avoid escaping the markup in the codeblock. This attribute accepts no value. https://revealjs.com/code/</a:documentation>
+        <empty/>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="data-ln-start-from">
+        <a:documentation>You can offset the line number if you want to showcase a excerpt of a longer set of code (e.g., 7). Value must be an integer. https://revealjs.com/code/</a:documentation>
+        <choice>
+          <data type="integer"></data>
+        </choice>
+      </attribute>
+    </optional>
+  </define>
+  <define name="base-attribute-extensions" combine="interleave">
+    <ref name="revealDataAtt-d-attribute"/>
+  </define>
+</grammar>

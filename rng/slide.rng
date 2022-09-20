@@ -120,6 +120,7 @@
         <include href="urn:oasis:names:tc:dita:rng:xmlDomain.rng"/>
         <include href="urn:doctales:dita:rng:dataFragmentIndexAttDomain.rng"/>
         <include href="urn:doctales:dita:rng:fragmentAttDomain.rng"/>
+        <include href="urn:doctales:dita:rng:revealDataAttDomain.rng"/>
     </div>
     
     <div>
